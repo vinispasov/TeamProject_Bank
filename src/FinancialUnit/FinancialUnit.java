@@ -1,4 +1,4 @@
-package FinancialUnit;
+package financialUnit;
 
 public class FinancialUnit {
 
