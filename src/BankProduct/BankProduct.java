@@ -42,9 +42,13 @@ public abstract class BankProduct {
 	public void setPeriodOfProductMonthly(int periodOfProductMonthly) {
 		if (periodOfProductMonthly<1||periodOfProductMonthly>60) {
 			Scanner sc=new Scanner(System.in);
-			System.out.println("The period should be between 1 and 60 months.");
+			System.out.println("The period should be between 1 and 60 months.Try again: ");
 			while(true) {
-				
+				periodOfProductMonthly=sc.nextInt();
+				if (periodOfProductMonthly>=1&&periodOfProductMonthly<=60) {
+					System.out.println("Correct period.");
+					break;
+				}
 			}
 		}
 		this.periodOfProductMonthly = periodOfProductMonthly;
