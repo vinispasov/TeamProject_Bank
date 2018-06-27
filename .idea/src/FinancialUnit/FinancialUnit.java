@@ -6,6 +6,10 @@ public class FinancialUnit {
     String adress;
     int availableCurrency;
 
+    public FinancialUnit(){
+
+    };
+
     public FinancialUnit(String name, String adress, int availableCurrency) {
         this.name = name;
         this.adress = adress;
