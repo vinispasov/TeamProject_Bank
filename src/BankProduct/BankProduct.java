@@ -2,21 +2,18 @@ package BankProduct;
 import java.util.Scanner;
 
 public abstract class BankProduct {
-
 	private String nameOfProduct;
 	private int annualInterestRate;
 	private int periodOfProductMonthly;
 	private int accountBalance;
 	
 	//constructor
-	public BankProduct(String nameOfProduct, int annualInterestRate, int periodOfProductMonthly) {
-		this.nameOfProduct = nameOfProduct;
-		this.annualInterestRate = annualInterestRate;
-		this.periodOfProductMonthly = periodOfProductMonthly;
-		this.accountBalance = 0;
+
+
+	public BankProduct() {
 	}
-	
-	
+
+
 	//getters and setters
 
 	public String getNameOfProduct() {

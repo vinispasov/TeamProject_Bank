@@ -1,8 +1,25 @@
-package bank.telerikacademy;
+package BankProduct.investment_services_and_activities;
 
 public class InvestmentServicesAndActivities {
+    public String getName() {
+        return name;
+    }
+
     private String name;
     private int currentPrice;
+
+    public int getPeriod() {
+        return period;
+    }
+
+    public int getFeesAndCommissions() {
+        return feesAndCommissions;
+    }
+
+    public int getInvestmentYield() {
+        return investmentYield;
+    }
+
     private int period;
 
     public int getNumber() {

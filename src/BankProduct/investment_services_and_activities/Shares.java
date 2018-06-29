@@ -1,11 +1,12 @@
-package bank.telerikacademy;
+package BankProduct.investment_services_and_activities;
 
 public class Shares extends InvestmentServicesAndActivities implements Buyable {
-    private int currentPrice;
+    public int getSellingPrice() {
+        return sellingPrice;
+    }
 
-    @Override
-    public int getCurrentPrice() {
-        return currentPrice;
+    private int sellingPrice;
+    public Shares() {
     }
 
     @Override
