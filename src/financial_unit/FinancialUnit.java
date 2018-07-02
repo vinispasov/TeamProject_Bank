@@ -1,10 +1,10 @@
-package FinancialUnit;
+package financial_unit;
 
 public class FinancialUnit {
 
-    String name;
-    String adress;
-    int availableCurrency;
+   private String name;
+   private String adress;
+   private int availableCurrency;
 
     public FinancialUnit(){
 
