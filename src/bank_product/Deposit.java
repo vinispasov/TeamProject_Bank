@@ -1,23 +1,21 @@
 package bank_product;
-import tools.OutOfAgeException;
 public class Deposit extends BankProduct{
 
-	
+	//deposit period
 	private static final int MIN_MONTHS_DEPOSIT=1;
 	private static final int MAX_MONTHS_DEPOSIT=24;
+	//deposit rates and taxes
 	private static final int RATE_DEPOSIT=2;
 	private static final int TAX_DEPOSIT=5;
+	//deposit amount
 	private static final int MIN_AMOUNT_DEPOSIT=10;
 	private static final int MAX_AMOUNT_DEPOSIT=1000000000;
+	
 	//constructor
-	public Deposit(int amount) {
+	public Deposit(String name,String idOrBulstat,int incomes,int amount) {
+		super(name,idOrBulstat,incomes);
 		int period=checkCreditPeriod(super.getPeriodOfProductMonthly(),MIN_MONTHS_DEPOSIT,MAX_MONTHS_DEPOSIT);
-		String idOrBulstat="";
-		try {
-			idOrBulstat=checkIdOrBulstat(super.getIdOrBulstat());
-		} catch (OutOfAgeException e) {
-			System.out.println("Sorry,the deposit is decline, because the person does not have the age to get deposite.");
-		}
+		
 		amount=checkDesireAmount(amount,MIN_AMOUNT_DEPOSIT,MAX_AMOUNT_DEPOSIT);
 		
 		super.setAccountBalance(amount);
@@ -27,10 +25,6 @@ public class Deposit extends BankProduct{
 		super.setTax(TAX_DEPOSIT);	
 	}
 
-	//getters and setters
-
-	//methods
-	
 	
 	
 	
