@@ -1,5 +1,4 @@
-package financialUnit;
-
+package financial_unit;
 import BankProduct.BankProduct;
 import java.util.List;
 
