@@ -1,6 +1,6 @@
 package BankProduct.investment_services_and_activities;
 
-public class CorporateBonds extends InvestmentServicesAndActivities implements Buyable,Sellable {
+public class CorporateBonds extends InvestmentServicesAndActivities {
 
 
     public CorporateBonds() {

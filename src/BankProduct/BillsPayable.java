@@ -1,6 +1,6 @@
 package BankProduct;
 
-public interface billsPayable {
+public interface BillsPayable {
     void  billsPayable();
     }
 

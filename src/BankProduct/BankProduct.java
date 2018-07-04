@@ -4,6 +4,14 @@ import java.util.Scanner;
 public abstract class BankProduct {
 	private String nameOfProduct;
 	private int annualInterestRate;
+
+	public BankProduct(String nameOfProduct, int annualInterestRate, int periodOfProductMonthly, int accountBalance) {
+		this.nameOfProduct = nameOfProduct;
+		this.annualInterestRate = annualInterestRate;
+		this.periodOfProductMonthly = periodOfProductMonthly;
+		this.accountBalance = accountBalance;
+	}
+
 	private int periodOfProductMonthly;
 	private int accountBalance;
 	
