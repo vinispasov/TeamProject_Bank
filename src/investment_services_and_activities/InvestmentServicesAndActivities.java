@@ -1,11 +1,11 @@
-package BankProduct.investment_services_and_activities;
+package investment_services_and_activities;
 
 public abstract class InvestmentServicesAndActivities {
     private int number;
-    private int feesAndCommissions;
-    private int investmentYield;
+    private double feesAndCommissions;
+    private double investmentYield;
     private String name;
-    private int currentPrice;
+    private double currentPrice;
 
 
     public String getName() {
@@ -21,11 +21,11 @@ public abstract class InvestmentServicesAndActivities {
         return period;
     }
 
-    public int getFeesAndCommissions() {
+    public double getFeesAndCommissions() {
         return feesAndCommissions;
     }
 
-    public int getInvestmentYield() {
+    public double getInvestmentYield() {
         return investmentYield;
     }
 
@@ -36,10 +36,10 @@ public abstract class InvestmentServicesAndActivities {
     }
 
 
-    public InvestmentServicesAndActivities(String name, int number, int price, int period, int feesAndCommissions, int investmentYield) {
+    public InvestmentServicesAndActivities(String name, int number, double currentPrice, int period, double feesAndCommissions, double investmentYield) {
         this.name = name;
         this.number = number;
-        this.currentPrice = getCurrentPrice();
+        this.currentPrice = currentPrice;
         this.period = period;
         this.feesAndCommissions = feesAndCommissions;
         this.investmentYield = investmentYield;
@@ -48,7 +48,7 @@ public abstract class InvestmentServicesAndActivities {
     public InvestmentServicesAndActivities() {
     }
 
-    public int getCurrentPrice() {
+    public double getCurrentPrice() {
         return currentPrice;
     }
 

@@ -1,6 +1,7 @@
-package BankProduct;
+package bank_product;
 
-import java.util.Date;
+import bank_product.BankCards;
+import bank_product.BillsPayable;
 
 public class CreditCards extends BankCards implements BillsPayable {
     final static int CREDIT_LIMIT = 50000;

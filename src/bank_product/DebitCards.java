@@ -1,6 +1,6 @@
-package BankProduct;
+package bank_product;
 
-import BankProduct.BankProduct;
+import bank_product.BankProduct;
 
 import java.util.Date;
 

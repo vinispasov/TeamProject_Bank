@@ -1,5 +1,5 @@
 package financial_unit;
-import BankProduct.BankProduct;
+import bank_product.BankProduct;
 import java.util.List;
 
 public class Bank extends FinancialUnit {
