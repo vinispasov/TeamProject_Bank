@@ -64,32 +64,37 @@ public class Credit extends BankProduct{
 	private static final int CORPORATE_OVERDRAFT_RATE=2;
 	//counter for separating the reasons for declined client:
 	private static int counterReasonForCreditNotApproved=0;
+	//reasons for declined client:
+	private static final int NUMBER_3_DECLINE_CONTRACT=3;
+	private static final int NUMBER_2_PHYSICAL=2;
+	private static final int NUMBER_1_CORPORATE=1;
+	private static final int NUMBER_0_BIG_AMOUNT_LOW_PERIOD=0;
 	// 0-means the desire amount is too big, or the period is too small.
-	//1-means, the person does not have the age to get credit.
+	//1-means, corporate entity can not get credit for physical entity.
+	//2-means, physical entity can not get credit for cooperate entity.
+	//3-means, client decline the contract.
+	
+	//fields
 	private double monthlyFee;
     
 	
     //constructors
 	//constructor for physical credit:
-	public Credit(Entity entity,CreditTypePhysical creditType,int periodOfProductMonthly,int amount,int incomes,String idOrBulstat) {
-		
+	public Credit(String name,int incomes,String idOrBulstat,Entity entity,CreditTypePhysical creditType,int periodOfProductMonthly,int amount) {
+		super(name,idOrBulstat,incomes);
 		try {
 			prepareCreditDetails(entity,creditType,periodOfProductMonthly,amount,incomes,idOrBulstat);
 		} catch (CreditNotApprovedException | ClientRefuseContractException e) {
-			if (counterReasonForCreditNotApproved==1) {
-				counterReasonForCreditNotApproved=0;
-				System.out.println("Sorry,the credit is decline, because the person does not have the age to get credit.");
-			}
-			else if (counterReasonForCreditNotApproved==2) {
-				counterReasonForCreditNotApproved=0;
+			if (counterReasonForCreditNotApproved==NUMBER_1_CORPORATE) {
+				counterReasonForCreditNotApproved=NUMBER_0_BIG_AMOUNT_LOW_PERIOD;
 				System.out.println("Sorry, cooperate entity can not get credit for physical entity.");
 			}
-			else if(counterReasonForCreditNotApproved==3) {
-				counterReasonForCreditNotApproved=0;
+			else if(counterReasonForCreditNotApproved==NUMBER_2_PHYSICAL) {
+				counterReasonForCreditNotApproved=NUMBER_0_BIG_AMOUNT_LOW_PERIOD;
 				System.out.println("Sorry, physical entity can not get credit for cooperate entity.");
 			}
-			else if (counterReasonForCreditNotApproved==4) {
-				counterReasonForCreditNotApproved=0;
+			else if (counterReasonForCreditNotApproved==NUMBER_3_DECLINE_CONTRACT) {
+				counterReasonForCreditNotApproved=NUMBER_0_BIG_AMOUNT_LOW_PERIOD;
 				System.out.println("Client decline contract.");
 			}
 			else {
@@ -99,25 +104,22 @@ public class Credit extends BankProduct{
 	}
 	
 	//constructor for corporate credit:
-  public Credit(Entity entity,CreditTypeCorporate creditType,int periodOfProductMonthly,int amount,int incomes,String idOrBulstat) {
-		
+  public Credit(String name,String idOrBulstat,int incomes,Entity entity,CreditTypeCorporate creditType,int periodOfProductMonthly,int amount) {
+		super(name,idOrBulstat,incomes);
 		try {
 			prepareCreditDetails(entity,creditType,periodOfProductMonthly,amount,incomes,idOrBulstat);
 		} catch (CreditNotApprovedException | ClientRefuseContractException e) {
-			if (counterReasonForCreditNotApproved==1) {
-				counterReasonForCreditNotApproved=0;
-				System.out.println("Sorry,the credit is decline, because the person does not have the age to get credit.");
-			}
-			else if (counterReasonForCreditNotApproved==2) {
-				counterReasonForCreditNotApproved=0;
+			
+		    if (counterReasonForCreditNotApproved==NUMBER_1_CORPORATE) {
+				counterReasonForCreditNotApproved=NUMBER_0_BIG_AMOUNT_LOW_PERIOD;
 				System.out.println("Sorry, cooperate entity can not get credit for physical entity.");
 			}
-			else if(counterReasonForCreditNotApproved==3) {
-				counterReasonForCreditNotApproved=0;
+			else if(counterReasonForCreditNotApproved==NUMBER_2_PHYSICAL) {
+				counterReasonForCreditNotApproved=NUMBER_0_BIG_AMOUNT_LOW_PERIOD;
 				System.out.println("Sorry, physical entity can not get credit for cooperate entity.");
 			}
-			else if (counterReasonForCreditNotApproved==4) {
-				counterReasonForCreditNotApproved=0;
+			else if (counterReasonForCreditNotApproved==NUMBER_3_DECLINE_CONTRACT) {
+				counterReasonForCreditNotApproved=NUMBER_0_BIG_AMOUNT_LOW_PERIOD;
 				System.out.println("Client decline contract.");
 			}
 			else {
@@ -247,10 +249,12 @@ public class Credit extends BankProduct{
 					String answer=sc.nextLine().toLowerCase();
 					if (answer.equals("yes")) {
 						 super.setPeriodOfProductMonthly(periodOfProductMonthly);
+						 sc.close();
 						 break;
 					}
 					else if(answer.equals("no")) {
-						counterReasonForCreditNotApproved=4;
+						counterReasonForCreditNotApproved=NUMBER_3_DECLINE_CONTRACT;
+						sc.close();
 						throw new ClientRefuseContractException();
 					}
 				   }
@@ -278,7 +282,7 @@ public class Credit extends BankProduct{
 			}
 		}
 		else {
-			counterReasonForCreditNotApproved=2;
+			counterReasonForCreditNotApproved=NUMBER_1_CORPORATE;
 			throw new CreditNotApprovedException();
 		}	
 	}
@@ -353,7 +357,7 @@ private void prepareCreditDetails(Entity entity,CreditTypeCorporate creditType,i
 						 break;
 					}
 					else if(answer.equals("no")) {
-						counterReasonForCreditNotApproved=4;
+						counterReasonForCreditNotApproved=NUMBER_3_DECLINE_CONTRACT;
 						sc.close();
 						throw new ClientRefuseContractException();
 					}
@@ -382,7 +386,7 @@ private void prepareCreditDetails(Entity entity,CreditTypeCorporate creditType,i
 			}
 		}
 		else {
-			counterReasonForCreditNotApproved=3;
+			counterReasonForCreditNotApproved=NUMBER_2_PHYSICAL;
 			throw new CreditNotApprovedException();
 		}
 		
@@ -390,17 +394,17 @@ private void prepareCreditDetails(Entity entity,CreditTypeCorporate creditType,i
 	}
 	
 	private boolean isApproved(int periodMonths,int amount,int incomes,int rate,int tax,String idOrBulstat) {
+		//find monthly fee
 		double monthlyFee=amount/periodMonths;
+		//find rate amount
 		double rateAmount=monthlyFee*(rate/HUNDRED);
+		//monthly fee + rate amount-->the whole amount to pay every month
 		double result=monthlyFee+rateAmount;
+		
+		//find if the incomes of the entity are enough for credit
+		//that is the max possible fee that the entity could pay in
 		double maxMonthFee=incomes*FORTY_PERCENT;
-		try {
-		checkIdOrBulstat(idOrBulstat);
-		}
-		catch(OutOfAgeException e) {
-			counterReasonForCreditNotApproved=1;
-			return false;
-		}
+		
 		if (result<=maxMonthFee) {
 			double monthlyFeeWithTax=result+tax;
 			this.monthlyFee=monthlyFeeWithTax;
