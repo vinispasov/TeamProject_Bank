@@ -6,6 +6,7 @@ public abstract class InvestmentServicesAndActivities {
     private double investmentYield;
     private String name;
     private double currentPrice;
+    static final int AGE_OF_MAJORITY =18;
 
 
     public String getName() {
