@@ -6,12 +6,8 @@ import tools.CreditNotApprovedException;
 import tools.Entity;
 import tools.OutOfAgeException;
 
-enum CreditTypePhysical {
-	CUSTOM,RESIDENTIAL,STUDENT,FAST,OVERDRAFT;
-}
-enum CreditTypeCorporate {
-	BUSINESS,INVESTMENT,OVERDRAFT;
-}
+
+
 public class Credit extends BankProduct{
 	//tool numbers for some Math calculations:
     private static final double FORTY_PERCENT =0.4;
