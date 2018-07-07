@@ -9,7 +9,7 @@ public class FinancialUnit {
     private int availableCurrency;
 
 
- 
+
     public FinancialUnit() {
 
     }
