@@ -3,7 +3,6 @@ package financial_unit;
 import bank_product.BankProduct;
 import bank_product.Credit;
 import bank_product.CreditTypePhysical;
-import com.sun.rmi.rmid.ExecPermission;
 import tools.Entity;
 import tools.OutOfCurrencyException;
 
@@ -74,9 +73,28 @@ public class Bank extends FinancialUnit {
 
 
     }
-
+//Prints all clients and their corresponding bank products.
     public void showAllClientsAndProducts() {
+        for (Client client : clientList) {
+            String bulstat = client.getIdOrBulstat();
+            client.toString();
 
+            List<BankProduct> products = clientProducts.get(bulstat);
+            for (BankProduct product : products) {
+
+                System.out.print(product.getName() + " ");
+                System.out.println(product.getAccountBalance() + " ");
+                System.out.println(product.getTax());
+            }
+        }
+
+
+
+        clientProducts.keySet();
+        clientProducts.values()
+        for (int i = 0; i < clientProdu ; i++) {
+            clientProducts.values()
+        }
     }
 
     public void listClientsByCreditScore() {
