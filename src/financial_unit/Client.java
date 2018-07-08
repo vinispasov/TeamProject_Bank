@@ -1,8 +1,12 @@
 package financial_unit;
 
+import bank_product.BankCards;
+import bank_product.BankProduct;
 import bank_product.Credit;
 import bank_product.Deposit;
+
 import java.util.List;
+
 import tools.Entity;
 
 public class Client extends FinancialUnit {
@@ -13,10 +17,8 @@ public class Client extends FinancialUnit {
     private Entity entity;
     private String idOrBulstat;
 
-    private List<Credit> creditList;
-    private List<Deposit> depositList;
-
-
+    private List<BankProduct> bankProductsList; // List to hold all credits and deposits of the client.
+    private List<BankCards> bankCardsList; //List to hold all credit and debit cards of the client.
 
 
     public Client(String name, String adress, int availableCurrency, int monthlySalary, int creditScore, Entity entity, String idOrBulstat) {
@@ -28,8 +30,6 @@ public class Client extends FinancialUnit {
         setCreditScore(creditScore);
         this.entity = entity;
     }
-
-
 
 
     public int getMonthlySalary() {
@@ -58,9 +58,7 @@ public class Client extends FinancialUnit {
     }
 
 
-
-
-    // the client initiates the transaction.
+    // the bank initiates the transaction.
     public void requestCredit() {
 
     }
@@ -73,8 +71,12 @@ public class Client extends FinancialUnit {
 
     }
 
+    //Overrides toString method to easily print the Client's fields.
     @Override
     public String toString() {
-        return "Client name: " + this.getName() + "Id: " + this.getIdOrBulstat() + " ";
+        return "\nClient name: " + this.getName() + " | "
+                + "Id: " + this.getIdOrBulstat() + " | "
+                + "CreditScore: " + this.getCreditScore() + " | "
+                + "Available Currency: " + this.getAvailableCurrency() + " | ";
     }
 }

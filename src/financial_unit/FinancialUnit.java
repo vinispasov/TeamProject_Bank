@@ -6,15 +6,14 @@ public class FinancialUnit {
 
     private String name;
     private String address;
-    private int availableCurrency;
-
+    private double availableCurrency;
 
 
     public FinancialUnit() {
 
     }
 
-    public FinancialUnit(String name, String address, int availableCurrency) {
+    public FinancialUnit(String name, String address, double availableCurrency) {
         setName(name);
         setAddress(address);
         setAvailableCurrency(availableCurrency);
@@ -25,9 +24,9 @@ public class FinancialUnit {
         return name;
     }
 
-    // Name must be of only alphabet characters, start with a capital letter and be no longer than 40 symbols.
+    // Name must be of only alphabet characters and start with a capital letter.
     public void setName(String name) {
-        if (name.matches("([^A-Za-z]+){0,39}$") && Character.isUpperCase(name.charAt(0))) {
+        if (name.matches("([A-Za-z\\s]*)") && Character.isUpperCase(name.charAt(0))) {
             this.name = name;
         } else {
             System.out.println("The entered name is invalid.");
@@ -40,27 +39,25 @@ public class FinancialUnit {
         return address;
     }
 
-    // Address must be of only alphanumeric characters and be no longer than 50 symbols.
+    // Address must be of only alphanumeric characters.
     public void setAddress(String address) {
-        if (address.matches("([^A-Za-z0-9]+){0,49}$")) {
+        if (address.matches("([A-Za-z0-9\\s]*)")) {
             this.address = address;
         } else {
             System.out.println("The address entered is invalid.");
         }
     }
 
-    public int getAvailableCurrency() {
+    public double getAvailableCurrency() {
         return availableCurrency;
 
     }
 
     // Available currency must be of only numeric characters.
-    public void setAvailableCurrency(int availableCurrency) {
+    public void setAvailableCurrency(double availableCurrency) {
 
         this.availableCurrency = availableCurrency;
     }
-
-
 
 
 }
