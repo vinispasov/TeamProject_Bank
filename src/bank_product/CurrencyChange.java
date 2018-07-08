@@ -15,20 +15,26 @@ public class CurrencyChange  {
         return currencyToBuy;
     }
 
-    public CurrencyChange(double currencyRate, AvailableBankCurrencies
+    public CurrencyChange(String clientName, double currencyRate, AvailableBankCurrencies
             currencyToSell, AvailableBankCurrencies currencyToBuy) {
+        this.clientName=clientName;
         this.currencyRate = currencyRate;
         this.currencyToSell = currencyToSell;
         this.currencyToBuy = currencyToBuy;
     }
-
+    private String clientName;
     private double currencyRate;
     private AvailableBankCurrencies currencyToSell;
     private AvailableBankCurrencies currencyToBuy;
+    public static final double CHANGE_TAX=0.05;
 
     void changeCurrency(double sumToBeChanged){
-        System.out.printf("Client %s change %.2f %s for %.2f %s\n "," ",sumToBeChanged,
-                getCurrencyToBuy().toString(),sumToBeChanged*getCurrencyRate(),getCurrencyToSell().toString());
+        System.out.printf("Client %s change %.2f %s for %.2f %s\n ",getClientName(),sumToBeChanged,
+                getCurrencyToBuy().toString(),(sumToBeChanged-CHANGE_TAX*sumToBeChanged)*getCurrencyRate(),getCurrencyToSell().toString());
 
+    }
+
+    public String getClientName() {
+        return clientName;
     }
 }
