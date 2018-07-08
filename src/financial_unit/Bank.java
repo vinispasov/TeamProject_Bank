@@ -91,6 +91,7 @@ public class Bank extends FinancialUnit {
 
     //Prints all clients and their corresponding bank products.
     public void showAllClientsAndProducts() {
+        System.out.println("List of all clients and bank products: ");
         for (Client client : clientList) {
             String bulstat = client.getIdOrBulstat();
             System.out.println(client.toString());
