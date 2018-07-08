@@ -36,8 +36,10 @@ public class Main {
         System.out.println("-------------------------------------------------------------------------------------------------------------");
 
         //bnb.removeBankProduct(ivan, "IvansCreditOne");
-        //bnb.showClientsBankProducts(telerik);
+
         System.out.println("-------------------------------------------------------------------------------------------------------------");
+        bnb.showAllClientsAndProducts();
+        bnb.removeClient(ivan);
         bnb.showAllClientsAndProducts();
 
     }

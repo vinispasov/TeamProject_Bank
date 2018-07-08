@@ -2,7 +2,7 @@ package financial_unit;
 
 import tools.OutOfCurrencyException;
 
-public class FinancialUnit {
+public abstract class FinancialUnit {
 
     private String name;
     private String address;
