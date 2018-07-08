@@ -28,7 +28,6 @@ public class Main {
         bnb.giveCreditPhysical(ivan, "KreditZaKushtaAdjusted",240,40000, CreditTypePhysical.RESIDENTIAL);
         System.out.println((int)bnb.getAvailableCurrency());
         System.out.println("-------------------------------------------------------------------------------------------------------------");
-        System.out.println((int)bnb.getAvailableCurrency());
         bnb.giveCreditCorporate(telerik, "NovaSgrada", 120, 240000, CreditTypeCorporate.INVESTMENT);
         System.out.println((int)bnb.getAvailableCurrency());
         System.out.println("-------------------------------------------------------------------------------------------------------------");

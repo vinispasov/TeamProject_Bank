@@ -45,9 +45,10 @@ public class Bank extends FinancialUnit {
         Credit credit = new Credit(creditName, client.getMonthlySalary(), client.getIdOrBulstat(), Entity.PHYSICAL, creditType, periodOfProductMonthly, amount);
         List<BankProduct> products = clientProducts.get(client.getIdOrBulstat());
         products.add(credit);
-        client.setAvailableCurrency(client.getAvailableCurrency() + credit.getAccountBalance());
-        if (credit.getAccountBalance() < 0) {
+
+        if (credit.getTax() > 0) {
             setAvailableCurrency(getAvailableCurrency() - amount);
+            client.setAvailableCurrency(client.getAvailableCurrency() + amount);
         }
 
     }
@@ -59,9 +60,10 @@ public class Bank extends FinancialUnit {
         Credit credit = new Credit(creditName, client.getIdOrBulstat(), client.getMonthlySalary(), Entity.CORPORATE, creditType, periodOfProductMonthly, amount);
         List<BankProduct> products = clientProducts.get(client.getIdOrBulstat());
         products.add(credit);
-        client.setAvailableCurrency(client.getAvailableCurrency() + credit.getAccountBalance());
-        if (credit.getAccountBalance() < 0) {
+
+        if (credit.getTax() > 0) {
             setAvailableCurrency(getAvailableCurrency() - amount);
+            client.setAvailableCurrency(client.getAvailableCurrency() + amount);
         }
 
 
