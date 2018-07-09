@@ -21,7 +21,6 @@ public class Main {
 
         System.out.println("-------------------------------------------------------------------------------------------------------------");
 
-
         bnb.giveCreditPhysical(ivan, "KreditZaKushta",60,41000, CreditTypePhysical.RESIDENTIAL);// Credit is declined.
         System.out.println((int)bnb.getAvailableCurrency());
         System.out.println("-------------------------------------------------------------------------------------------------------------");

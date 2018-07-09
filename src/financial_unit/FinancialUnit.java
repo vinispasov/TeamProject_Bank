@@ -1,7 +1,5 @@
 package financial_unit;
 
-import tools.OutOfCurrencyException;
-
 public abstract class FinancialUnit {
 
     private String name;
@@ -34,7 +32,6 @@ public abstract class FinancialUnit {
 
     }
 
-
     public String getAddress() {
         return address;
     }
@@ -58,6 +55,5 @@ public abstract class FinancialUnit {
 
         this.availableCurrency = availableCurrency;
     }
-
 
 }

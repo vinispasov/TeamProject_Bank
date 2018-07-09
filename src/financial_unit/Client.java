@@ -36,7 +36,7 @@ public class Client extends FinancialUnit {
         return monthlySalary;
     }
 
-    // Monthly salary must be of only numeric characters.
+
     public void setMonthlySalary(int monthlySalary) {
         this.monthlySalary = monthlySalary;
     }
@@ -57,19 +57,6 @@ public class Client extends FinancialUnit {
         this.idOrBulstat = idOrBulstat;
     }
 
-
-    // the bank initiates the transaction.
-    public void requestCredit() {
-
-    }
-
-    public void payCredit() {
-
-    }
-
-    public void giveDeposit() {
-
-    }
 
     //Overrides toString method to easily print the Client's fields.
     @Override
