@@ -1,8 +1,10 @@
 package bank_product;
+import our_exceptions.UnderAgeException;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class CreditCards extends BankCards implements BillsPayable,ClientYearsCheckable,CardValidityCheckable {
+public class CreditCards extends BankCards implements BillsPayable,CardValidityCheckable {
 
     private double creditLimit;
     final static int FROM_PERCENT_TO_NUMBER=100;
@@ -23,8 +25,8 @@ public class CreditCards extends BankCards implements BillsPayable,ClientYearsCh
             }
             }
 
-    @Override
-    public void clientYearsCheck(int birthYear,int birthMonth,int birthDay) {
+
+    public void checkClientYears(int birthYear, int birthMonth, int birthDay) throws UnderAgeException {
         GregorianCalendar cal = new GregorianCalendar();
         int y, m, d, years;
 
@@ -33,12 +35,10 @@ public class CreditCards extends BankCards implements BillsPayable,ClientYearsCh
         d = cal.get(Calendar.DAY_OF_MONTH);//current day
         cal.set(birthYear, birthMonth, birthDay);// here client birthDate
         years = y - cal.get(Calendar.YEAR);
-        if (years<18||(years==18&&(m < cal.get(Calendar.MONTH)))
-                || (years==18&&(m == cal.get(Calendar.MONTH)) && (d < cal
-                .get(Calendar.DAY_OF_MONTH)))) {
-            System.out.printf("Client %s is under age,he cannot be approve for credit card\n","");
+        if (years < AGE_OF_MAJORITY || (years == AGE_OF_MAJORITY && (m < cal.get(Calendar.MONTH))) || (years == AGE_OF_MAJORITY && (m == cal.get(Calendar.MONTH)) && (d < cal.get(Calendar.DAY_OF_MONTH)))) {
+            throw new UnderAgeException("The client is under age,he cannot be approve for credit card\n");
         }else{
-            System.out.printf("Client %s,is approved for credit card\n","P");
+            System.out.printf("Client %s,is approved for credit card\n",getName());
         }
     }
 
@@ -54,19 +54,19 @@ public class CreditCards extends BankCards implements BillsPayable,ClientYearsCh
         if (y>cal.get(Calendar.YEAR)||(y==cal.get(Calendar.YEAR)&&(m > cal.get(Calendar.MONTH)))
                 || (y==cal.get(Calendar.YEAR)&&(m == cal.get(Calendar.MONTH)) && (d > cal
                 .get(Calendar.DAY_OF_MONTH)))) {
-            System.out.printf("Client %s credit card is valid\n","");
+            System.out.printf("Client %s credit card is valid\n",getName());
         }else{
             System.out.printf("Client %s,credit card is expired,he/she cannot pay for this" +
-                    "bill with this card,he/she have to reissue the card\n","P");
+                    "bill with this card,he/she have to reissue the card\n",getName());
         }
     }
     public void cashFromATMWithdraw(int withdrawalSum) {
         if(creditLimit>withdrawalSum){
-            System.out.printf("Client %s withdrawl %d BGN,and now his/her credit card limit is %.2f\n"," ",withdrawalSum,creditLimit-withdrawalSum-getWithdrawTax());
+            System.out.printf("Client %s withdrawl %d BGN,and now his/her credit card limit is %.2f\n",getName(),withdrawalSum,creditLimit-withdrawalSum-getWithdrawTax());
             creditLimit=creditLimit-withdrawalSum-getWithdrawTax();
         }
         else {
-            System.out.printf("Client %s,cannot withdraw %d BGN,his/her credit limit is %.2f\n"," ",withdrawalSum,creditLimit);
+            System.out.printf("Client %s,cannot withdraw %d BGN,his/her credit limit is %.2f\n",getName(),withdrawalSum,creditLimit);
         }
     }
 }
