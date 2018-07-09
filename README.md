@@ -12,4 +12,4 @@ of financial instruments that the clients can use. Those include different types
 (debit or credit) and investment bonds. Each instrument offers different terms and conditions to realistically
 represent the corresponding financial instrument. The terms of the different bank product depend on the type of
 the product, the type of the client and the additional parameters that the client can choose such as the amount
-and duration of the product. 
+and duration of the product.

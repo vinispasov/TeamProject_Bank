@@ -78,7 +78,7 @@ public class Bank extends FinancialUnit {
             setAvailableCurrency(getAvailableCurrency() - amount);
             client.setAvailableCurrency(client.getAvailableCurrency() + amount);
         }
-
+        System.out.println("The available currency in the bank at this moment is: " + (int)getAvailableCurrency());
     }
 
     //Creates a new Credit object and assigns it to a client. All calculations happen inside the Credit class.
@@ -99,6 +99,7 @@ public class Bank extends FinancialUnit {
             setAvailableCurrency(getAvailableCurrency() - amount);
             client.setAvailableCurrency(client.getAvailableCurrency() + amount);
         }
+        System.out.println("The available currency in the bank at this moment is: " + (int)getAvailableCurrency());
 
     }
 
