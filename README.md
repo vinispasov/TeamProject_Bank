@@ -1,10 +1,10 @@
-#TeamProject_Bank
+# TeamProject_Bank
 
-This is the repo for the Team Loki project.
+ This is the repo for the Team Loki project.
 
-Team Members: Винченцо Спасов (vinchenzo); Слави Ил (Slavi1); Росен Халачев (RossenH)
+### Team Members: Винченцо Спасов (vinchenzo); Слави Ил (Slavi1); Росен Халачев (RossenH)
 
-##Project description
+# Project description
 
 For our project we choose to create an application depicting the day-to-day operations of a Bank institution.
 Our application allows the creation of one or more "Bank" units and their clients. We have created a variety
